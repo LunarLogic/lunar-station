@@ -1,12 +1,8 @@
 base_url = "https://dl-ssl.google.com/linux/direct/"
 
 case node[:platform]
-when 'fedora', 'ubuntu'
-  if node[:platform] == 'fedora'
-    filename = "google-chrome-stable_current_i386.rpm"
-  else
-    filename = "google-chrome-stable_current_i386.deb"
-  end
+when 'fedora'
+  filename = "google-chrome-stable_current_i386.rpm"
 
   bash "downloading package #{filename}" do
     cwd "/tmp"
@@ -18,6 +14,13 @@ when 'fedora', 'ubuntu'
     source "/tmp/#{filename}"
     action :install
   end
+
+when 'ubuntu'
+  cookbook_file '/etc/apt/sources.list.d/google-chrome.list' do
+    source 'google-chrome.list'
+  end
+
+  package 'google-chrome-stable'
 
 when 'mac_os_x'
   dmg_package "Google Chrome" do

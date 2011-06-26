@@ -25,7 +25,7 @@ when 'ubuntu'
     not_if { File.exist? "/tmp/#{filename}" }
   end
 
-  package 'skype' do
+  dpkg_package 'skype' do
     source "/tmp/#{filename}"
     action :install
   end
