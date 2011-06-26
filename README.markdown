@@ -17,7 +17,7 @@
 Lunar Station is a set of Chef cookbooks and a bash script for bootstrapping
 developers machines at Lunar Logic Polska.
 
-Its goal is to make automatic, repetitive installation of common software that
+Its goal is to make automatic, repetitive installation of common software
 developers need easy and in the shape of single command.
 
 It supports Linux (Fedora, Ubuntu) and Mac OSX (10.5+).
@@ -43,7 +43,7 @@ available in repositories are installed from .deb or .rpm files downloaded from
 vendor sites.
 
 On OSX Homebrew is installed first and most of above packages are then
-installed with brew. Packages not available in Homebrew are installed from DMG
+installed with brew. Packages not available from Homebrew are installed from DMG
 files downloaded from vendor sites.
 
 # Requirements
