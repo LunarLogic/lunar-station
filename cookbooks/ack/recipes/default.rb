@@ -1,6 +1,6 @@
 case node[:platform]
 when "ubuntu"
   package "ack-grep"
-when "fedora"
+else
   package "ack"
 end
