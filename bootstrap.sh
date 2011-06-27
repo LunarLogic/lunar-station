@@ -40,6 +40,11 @@ if [ ! -d ~/.rvm ]; then
   curl -sk https://rvm.beginrescueend.com/install/rvm -o rvm-installer && chmod +x rvm-installer && ./rvm-installer --version latest || exit 1
   cd -
 
+  log "Adding bundler and capistrano to global gemset list for all rubies..."
+  echo "bundler" >>~/.rvm/gemsets/global.gems
+  echo "capistrano" >>~/.rvm/gemsets/global.gems
+  echo "capistrano-ext" >>~/.rvm/gemsets/global.gems
+
   log "Appending RVM function to your .bash_profile..."
   grep "scripts/rvm" ~/.bash_profile >/dev/null 2>&1 || echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' >> ~/.bash_profile
   . ~/.rvm/scripts/rvm
