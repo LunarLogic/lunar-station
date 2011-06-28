@@ -23,14 +23,10 @@ fi
 
 if [ $PLATFORM = "ubuntu" ]; then
   log "Refreshing apt database..."
-  # sudo apt-get update >/dev/null 2>&1
-fi
+  sudo apt-get update >/dev/null 2>&1
 
-log "Making sure curl is installed..."
-if [ $PLATFORM = "ubuntu" ]; then
+  log "Making sure curl is installed..."
   sudo apt-get -y install curl
-elif [ $PLATFORM = "fedora" ]; then
-  sudo yum -y install curl
 fi
 
 log "Checking for RVM..."
