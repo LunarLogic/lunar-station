@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH=$PATH:$HOME/bin
+
 echo -e "\e[1;32mInitializing Lunar Workstation...\e[0m"
 
 function log {
