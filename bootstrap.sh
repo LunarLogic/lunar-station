@@ -32,7 +32,7 @@ if [ $PLATFORM = "ubuntu" ]; then
   sudo apt-get update >/dev/null 2>&1
 
   log "Making sure curl is installed..."
-  sudo apt-get -y install curl
+  sudo apt-get -y install curl >/dev/null
 fi
 
 log "Checking for RVM..."
@@ -61,7 +61,7 @@ fi
 
 if [ -z $(which chef-solo 2>/dev/null) ]; then
   log "Installing chef gem..."
-  gem install chef --no-ri --no-rdoc || exit 1
+  gem install chef --no-ri --no-rdoc >/dev/null || exit 1
 fi
 
 if [ -n "$1" ]; then
