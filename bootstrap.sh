@@ -1,12 +1,16 @@
 #!/bin/bash
 
-export PATH=$PATH:$HOME/bin
-
 echo -e "\e[1;32mInitializing Lunar Workstation...\e[0m"
 
 function log {
   echo -e "\e[1;31m>> \e[1;34m$1\e[0m"
 }
+
+export PATH=$PATH:$HOME/bin
+
+WORK_DIR=/tmp/lunar-station-`date +%s`
+mkdir -p $WORK_DIR
+cd $WORK_DIR
 
 if [ $OSTYPE == "linux-gnu" ]; then
   OS="linux"
@@ -34,9 +38,7 @@ fi
 log "Checking for RVM..."
 if [ ! -d ~/.rvm ]; then
   log "RVM not found, installing..."
-  cd /tmp
-  curl -sk https://rvm.beginrescueend.com/install/rvm -o rvm-installer && chmod +x rvm-installer && ./rvm-installer --version latest || exit 1
-  cd -
+  curl -s https://rvm.beginrescueend.com/install/rvm -o rvm-installer && chmod +x rvm-installer && ./rvm-installer --version latest || exit 1
 
   log "Adding bundler and capistrano to global gemset list for all rubies..."
   echo "bundler" >>~/.rvm/gemsets/global.gems
@@ -67,6 +69,11 @@ if [ -n "$1" ]; then
 else
   DEV_TYPE="rubydev"
 fi
+
+log "Fetching latest version of Lunar Station cookbooks..."
+curl -sL -o lunar-station.tar.gz https://github.com/LunarLogicPolska/lunar-station/tarball/master || exit 1
+tar xf lunar-station.tar.gz || exit 1
+cd `tar tf lunar-station.tar.gz | head -1`
 
 log "Starting chef-solo run..."
 rvmsudo chef-solo -c config/solo.rb -j nodes/$OS-$DEV_TYPE.json
