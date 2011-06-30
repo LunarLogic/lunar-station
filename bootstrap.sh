@@ -29,9 +29,6 @@ else # TODO: check if it's "darwin*"
 fi
 
 if [ $PLATFORM = "ubuntu" ]; then
-  log "Enabling \"partner\" repository..."
-  sudo sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
-
   log "Refreshing apt database..."
   sudo apt-get update >/dev/null 2>&1
 

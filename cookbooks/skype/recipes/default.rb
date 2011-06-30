@@ -16,6 +16,8 @@ when 'fedora'
   end
 
 when 'ubuntu'
+  include_recipe 'init::ubuntu' # for partner repo
+
   package 'skype'
 
 when 'mac_os_x'
