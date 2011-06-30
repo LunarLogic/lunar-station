@@ -16,7 +16,8 @@ if [ $OSTYPE == "linux-gnu" ]; then
   OS="linux"
   if [ -x /usr/bin/apt-get ]; then
     PLATFORM="ubuntu"
-    log "Ubuntu/Debian Linux detected."
+    UBUNTU_CODENAME=`cat /etc/*-release | grep DISTRIB_CODENAME | sed 's/.*=//g'`
+    log "Ubuntu/Debian ($UBUNTU_CODENAME) Linux detected."
   elif [ -x /usr/bin/yum ]; then
     PLATFORM="fedora"
     log "Fedora Linux detected."
@@ -28,11 +29,14 @@ else # TODO: check if it's "darwin*"
 fi
 
 if [ $PLATFORM = "ubuntu" ]; then
+  log "Enabling \"partner\" repository..."
+  sudo sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
+
   log "Refreshing apt database..."
   sudo apt-get update >/dev/null 2>&1
 
   log "Making sure curl is installed..."
-  sudo apt-get -y install curl >/dev/null
+  which curl >/dev/null 2>&1 || sudo apt-get -y install curl >/dev/null
 fi
 
 log "Checking for RVM..."
