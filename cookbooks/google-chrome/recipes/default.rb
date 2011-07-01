@@ -2,18 +2,13 @@ base_url = "https://dl-ssl.google.com/linux/direct/"
 
 case node[:platform]
 when 'fedora'
-  filename = "google-chrome-stable_current_i386.rpm"
-
-  bash "downloading package #{filename}" do
-    cwd "/tmp"
-    code "curl -kLsO #{base_url}#{filename}"
-    not_if { File.exist? "/tmp/#{filename}" }
+  yum_repository "google" do
+    name "Google Repository"
+    url "http://dl.google.com/linux/rpm/stable/i386"
+    key "https://dl-ssl.google.com/linux/linux_signing_key.pub"
   end
 
-  package 'google-chrome-stable' do
-    source "/tmp/#{filename}"
-    action :install
-  end
+  package 'google-chrome-stable'
 
 when 'ubuntu'
   apt_repository "google-chrome" do
