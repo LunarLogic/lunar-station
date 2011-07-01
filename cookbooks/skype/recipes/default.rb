@@ -1,19 +1,12 @@
 case node[:platform]
 when 'fedora'
-  base_url = "http://download.skype.com/linux/"
-  skype_version = "2.2.0.35"
-  filename = "skype-#{skype_version}-fedora.i586.rpm"
-
-  bash "downloading package #{filename}" do
-    cwd "/tmp"
-    code "curl -kLsO #{base_url}#{filename}"
-    not_if { File.exist? "/tmp/#{filename}" }
+  yum_repository "skype" do
+    name "Skype Repository"
+    url "http://download.skype.com/linux/repos/fedora/updates/i586"
+    key "http://www.skype.com/products/skype/linux/rpm-public-key.asc"
   end
 
-  package 'skype' do
-    source "/tmp/#{filename}"
-    action :install
-  end
+  package 'skype'
 
 when 'ubuntu'
   include_recipe 'init::ubuntu' # for partner repo
