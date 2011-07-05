@@ -27,7 +27,7 @@ It supports Linux (Fedora, Ubuntu) and Mac OSX (10.5+).
 Lunar Station installs following:
 
 * build tools (Linux only)
-* RVM + Ruby 1.9.2
+* RVM + Ruby 1.9.2 (with bundler and capistrano)
 * Homebrew (OSX only)
 * git
 * ack
