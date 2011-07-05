@@ -8,6 +8,7 @@ function log {
 
 export PATH=$PATH:$HOME/bin
 
+PREV_DIR=$PWD
 WORK_DIR=/tmp/lunar-station-`date +%s`
 mkdir -p $WORK_DIR
 cd $WORK_DIR
@@ -74,9 +75,13 @@ if [ -z "$DEV_TYPE" ]; then
 fi
 
 log "Fetching latest version of Lunar Station cookbooks..."
-curl -sL -o lunar-station.tar.gz https://github.com/LunarLogicPolska/lunar-station/tarball/master || exit 1
-tar xf lunar-station.tar.gz || exit 1
-cd `tar tf lunar-station.tar.gz | head -1`
+if [[ -d "$PREV_DIR/cookbooks" && -d "$PREV_DIR/nodes" && -d "$PREV_DIR/config" ]]; then
+  cp -r $PREV_DIR/cookbooks $PREV_DIR/nodes $PREV_DIR/roles $PREV_DIR/config .
+else
+  curl -sL -o lunar-station.tar.gz https://github.com/LunarLogicPolska/lunar-station/tarball/master || exit 1
+  tar xf lunar-station.tar.gz || exit 1
+  cd `tar tf lunar-station.tar.gz | head -1`
+fi
 
 log "Starting chef-solo run..."
 rvmsudo chef-solo -c config/solo.rb -j nodes/$OS-$DEV_TYPE.json
