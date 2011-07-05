@@ -75,3 +75,7 @@ family) on OSX system.
         $ bash lunar-station
 
     where "lunar-station" is name of downloaded file with bootstrap script.
+
+# Authors
+
+Marcin Kulik
