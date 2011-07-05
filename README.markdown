@@ -81,6 +81,16 @@ DEV\_TYPE can be one of following:
 * rubydev - for Ruby on Rails developer
 * javadev - for Java developer
 
+# Development
+
+If you want to help you can clone this repository and work on improvements
+locally. After doing some changes you can run bootstrap script from inside of
+project directory like this:
+
+    $ DEV_TYPE=rubydev ./bootstrap.sh
+
+This will use local cookbooks copy instead of fetching them from github repo.
+
 # Authors
 
 Marcin Kulik
