@@ -33,28 +33,25 @@ Lunar Station installs following:
 * ack
 * curl
 * wget
-* MySQL client, server and dev libs/headers
+* ctags
+* (G)vim (Linux), MacVim (OSX)
+* MySQL client, server, dev libs and headers
 * libxml2
 * Firefox
 * Google Chrome
 * Skype
 
 On Linux the packages are installed from distro repositories. Packages not
-available in repositories are installed from .deb or .rpm files downloaded from
-vendor sites.
+available in official repositories are installed from custom, vendor provided
+repos.
 
 On OSX Homebrew is installed first and most of above packages are then
-installed with brew. Packages not available from Homebrew are installed from DMG
+installed with brew. Packages not available via Homebrew are installed from DMG
 files downloaded from vendor sites.
 
 # Requirements
 
-## Linux
-
-Nothing really. Ruby (1.8.6+) and Rubygems are required for Chef but Lunar
-Station bootstrap script checks for them and installs them automatically if
-needed on Fedora and Ubuntu systems from distro repos. For other distros just
-install ruby (with dev headers) and rubygems.
+Curl or wget.
 
 ## Mac OSX
 
@@ -75,4 +72,6 @@ family) on OSX system.
 
     or just manually download the bootstrap script and run it with bash:
 
-        $ bash lunar-station (<- downloaded file)
+        $ bash lunar-station
+
+    where "lunar-station" is name of downloaded file with bootstrap script.
