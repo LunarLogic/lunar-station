@@ -64,17 +64,22 @@ family) on OSX system.
 * install Xcode if on OSX
 * run following in terminal:
 
-        $ curl -skL http://bit.ly/lunar-station | bash
+        $ curl -skL http://bit.ly/lunar-station | DEV_TYPE=rubydev bash
 
     or if curl is not installed but wget is:
 
-        $ wget -qO - http://bit.ly/lunar-station | bash
+        $ wget -qO - http://bit.ly/lunar-station | DEV_TYPE=rubydev bash
 
     or just manually download the bootstrap script and run it with bash:
 
-        $ bash lunar-station
+        $ DEV_TYPE=rubydev bash lunar-station
 
     where "lunar-station" is name of downloaded file with bootstrap script.
+
+DEV\_TYPE can be one of following:
+
+* rubydev - for Ruby on Rails developer
+* javadev - for Java developer
 
 # Authors
 

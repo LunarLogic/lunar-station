@@ -69,9 +69,7 @@ if [ -z $(which chef-solo 2>/dev/null) ]; then
   gem install chef --no-ri --no-rdoc >/dev/null || exit 1
 fi
 
-if [ -n "$1" ]; then
-  DEV_TYPE=$1
-else
+if [ -z "$DEV_TYPE" ]; then
   DEV_TYPE="rubydev"
 fi
 
