@@ -28,6 +28,8 @@ else # TODO: check if it's "darwin*"
   log "Mac OSX detected."
 fi
 
+sudo -v
+
 if [ $PLATFORM = "ubuntu" ]; then
   log "Refreshing apt database..."
   sudo apt-get update >/dev/null 2>&1
