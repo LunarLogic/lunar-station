@@ -1,2 +1,5 @@
 chef-stacktrace.out
 vagrant
+
+*.tmp
+*~
