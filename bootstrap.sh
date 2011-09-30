@@ -60,8 +60,6 @@ if [ ! -d ~/.rvm ]; then
     sudo yum -y install gcc gcc-c++ make patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel bzip2
   fi
 
-  echo "yaml_url=https://rvm.beginrescueend.com/src" >> $rvm_user_path/db # <- temporary, until new stable RVM version
-
   rvm install 1.9.2 && rvm use 1.9.2 --default
 fi
 
