@@ -62,11 +62,12 @@ if [[ ! $(rvm list | grep -F 1.9.2) ]]; then
     sudo yum -y install gcc gcc-c++ make patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel bzip2
   fi
 
-  rvm install 1.9.2 && rvm use 1.9.2 --default
+  rvm install 1.9.2
 fi
 
 if [ ! $(which chef-solo 2>/dev/null) ]; then
   log "Installing chef gem..."
+  rvm use 1.9.2 --default
   gem install chef --no-ri --no-rdoc >/dev/null || exit 1
 fi
 
