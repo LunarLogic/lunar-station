@@ -54,7 +54,7 @@ if [ ! -d ~/.rvm ]; then
   . ~/.rvm/scripts/rvm
 fi
 
-if [ ! $(rvm list | grep -F 1.9.2) ]; then
+if [[ ! $(rvm list | grep -F 1.9.2) ]]; then
   log "Installing ruby 1.9.2..."
   if [ $PLATFORM = "ubuntu" ]; then
     sudo apt-get -y install build-essential bison openssl libreadline6 libreadline6-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev
@@ -65,7 +65,7 @@ if [ ! $(rvm list | grep -F 1.9.2) ]; then
   rvm install 1.9.2 && rvm use 1.9.2 --default
 fi
 
-if [ ! $(which chef-solo &>/dev/null) ]; then
+if [ ! $(which chef-solo 2>/dev/null) ]; then
   log "Installing chef gem..."
   gem install chef --no-ri --no-rdoc >/dev/null || exit 1
 fi
