@@ -4,7 +4,7 @@ case node[:platform]
 when 'fedora'
   yum_repository "google" do
     name "Google Repository"
-    url "http://dl.google.com/linux/rpm/stable/i386"
+    url "http://dl.google.com/linux/rpm/stable/x86_64"
     key "https://dl-ssl.google.com/linux/linux_signing_key.pub"
   end
 
