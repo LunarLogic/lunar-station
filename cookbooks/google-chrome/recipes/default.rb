@@ -6,6 +6,7 @@ when 'fedora'
     name "Google Repository"
     url "http://dl.google.com/linux/rpm/stable/x86_64"
     key "https://dl-ssl.google.com/linux/linux_signing_key.pub"
+    action :add
   end
 
   package 'google-chrome-stable'
