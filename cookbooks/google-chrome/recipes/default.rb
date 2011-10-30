@@ -2,9 +2,9 @@ base_url = "https://dl-ssl.google.com/linux/direct/"
 
 case node[:platform]
 when 'fedora'
-  yum_repository "google" do
-    name "Google Repository"
-    url "http://dl.google.com/linux/rpm/stable/x86_64"
+  yum_repository "google-chrome" do
+    name "google-chrome"
+    url "http://dl.google.com/linux/chrome/rpm/stable/x86_64"
     key "https://dl-ssl.google.com/linux/linux_signing_key.pub"
     action :add
   end
