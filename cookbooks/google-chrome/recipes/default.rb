@@ -6,7 +6,6 @@ when 'fedora'
     name "google-chrome"
     description "Official Chrome repository"
     url "http://dl.google.com/linux/chrome/rpm/stable/x86_64"
-    key "https://dl-ssl.google.com/linux/linux_signing_key.pub"
     action :add
   end
 
