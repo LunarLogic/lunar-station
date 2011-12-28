@@ -16,7 +16,7 @@ when 'ubuntu'
 
 when 'mac_os_x'
   dmg_package "Skype" do
-    source "http://www.skype.com/go/getskype-macosx.dmg"
+    source "http://www.skype.com/go/getskype-macosx-samplingb"
     action :install
   end
 end
