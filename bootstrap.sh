@@ -84,5 +84,11 @@ else
   cd `tar tf lunar-station.tar.gz | head -1`
 fi
 
+log "Checking for /usr/local directory..."
+if [ ! -d /usr/local ]; then
+  log "/usr/local directory not found, creating..."
+  sudo mkdir /usr/local
+fi
+
 log "Starting chef-solo run..."
 rvmsudo chef-solo -c config/solo.rb -j nodes/$OS-$DEV_TYPE.json
