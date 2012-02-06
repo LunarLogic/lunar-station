@@ -42,7 +42,7 @@ fi
 log "Checking for RVM..."
 if [ ! -d ~/.rvm ]; then
   log "RVM not found, installing..."
-  curl -s https://rvm.beginrescueend.com/install/rvm -o rvm-installer && chmod +x rvm-installer && ./rvm-installer --version latest || exit 1
+  curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer -o rvm-installer && chmod +x rvm-installer && ./rvm-installer --version latest || exit 1
 
   log "Adding bundler and capistrano to global gemset list for all rubies..."
   echo "bundler" >>~/.rvm/gemsets/global.gems
